@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lag="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; 
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-image:url(images/purple.png);background-repeat: no-repeat;background-size:cover;background-attachment: fixed;background-position: center;">
+    <p style="text-align: center;font-family:cursive;font-style:italic;font-size: 19px;">
+        Welcome to my webpage!Please fill the form below, it will be saved locally.
+    </p>
+    <div class="form-container">
+        <form onsubmit="storeData(event)">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" required><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script>
+        function storeData(e) {
+            e.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem("name", name);
+                sessionStorage.setItem("email", email);
+                window.location.href = "MainPage.html";
+            }
+        }
+    </script>
+</body>
+</html>
